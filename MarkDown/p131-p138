@@ -1,0 +1,53 @@
+showDialog(
+    context: <BuildContext>
+    build: <widgetBuilder>
+)
+
+showDialog
+showDialog 関数は、主に ダイアログ（ポップアップ）を表示するための関数
+
+showDialogの基本
+showDialog(
+    context: context,
+    builder: (BuildContext context) => AlerDialog(・・・)
+
+context指定について
+BuildContext は、Flutter のウィジェットツリー内で 現在の位置 を表すオブジェクト
+showDialog は、その context を使って、どの階層のウィジェットに対してモーダルを表示するかを判断する
+
+
+AlertDialogについて
+AlertDialog(
+    taitle: ウィジェット
+    content: ウィジェット
+)
+builderにはAlertDialogというクラスを作成
+↑上のような形でインスタンスを作成する
+
+
+AlertDialogにはactionというプリパティが用意される
+actions: <widget>[・・・ウィジェットリスト・・・]
+
+
+ShowDialogの後に「then」というメソッドを用意して実行する処理を用意する
+thenはshowDialogコールバック関数を指定するもの
+
+
+actionsボタン
+ShowDialogのactionにウィジェットリストを用意する
+onPressed: () => Navigator.pop<String>(context,'Cancel')
+
+thenによるアラート後の処理
+thenメソッド内で行ってます
+then<void>((value)) => resultAlert(value));
+これによってresultメソッドがコールバックとして呼び出される
+
+
+SimpleDialog は、AlertDialog よりも シンプルな選択肢のリストを提示するダイアログです。
+SimpleDialog は、ユーザーに対して「いくつかの選択肢から1つを選ばせる」目的で使われる
+言語選択・設定項目の選択・簡単なアクションのリストなどに適用する
+
+
+SimpleDialog
+SimpleDialogOption は SimpleDialog 内で単一の選択肢を表すウィジェット
+
